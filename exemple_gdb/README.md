@@ -1,0 +1,9 @@
+# First observations
+
+## Stack pointer
+
+Break on foo, stack pointer `0x7fffff0`.
+Enter in foo method (l. 16 to 18) `0x7ffffd8`.
+Enter in bar method (l. 5 to 7) `0x7ffffc8`. (pile décrémente)
+Back to the previous context ( main method ) `0x7fffff0`.
+
