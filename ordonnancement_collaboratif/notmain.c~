@@ -2,8 +2,6 @@
 #include "process.h"
 #include "dispatcher.h"
 
-typedef void (*func_t)(void);
-
 struct ctx_s ctx_A;
 struct ctx_s ctx_B;
 struct ctx_s ctx_init;
