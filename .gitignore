@@ -1,0 +1,6 @@
+
+# Object file
+*.o
+
+# All generated files
+exemple_gdb/kernel.*
