@@ -1,9 +1,12 @@
+#include <stdint.h>
 
-struct ctx_s {
+typedef void (*func_t)(void);
+
+typedef struct{
 	uint32_t adr_instruction;
 	uint32_t adr_stack;
-};
+} ctx_s;
 
-struct ctx_s* current_ctx;
+ctx_s* current_ctx;
 
-void init_ctx(struct ctx_s* ctx, func_t f, unsigned int stack_size);
+void init_ctx(ctx_s* ctx, func_t f, unsigned int stack_size);

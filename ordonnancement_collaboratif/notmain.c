@@ -2,7 +2,8 @@
 #include "process.h"
 #include "dispatcher.h"
 
-typedef void (*func_t)(void);
+// To be verified
+const STACK_SIZE = 1000;
 
 struct ctx_s ctx_A;
 struct ctx_s ctx_B;

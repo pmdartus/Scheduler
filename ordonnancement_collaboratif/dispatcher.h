@@ -1,1 +1,3 @@
-void switch_to(struct ctx_s* ctx);
+#include "process.h"
+
+void switch_to(ctx_s* ctx);
