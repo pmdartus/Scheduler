@@ -4,8 +4,7 @@
 
 # Remaining file from (shitty) TextEdit
 *~
-*.c~
-*.h~
+*.*~
 
 # All generated files
 exemple_gdb/kernel.*
