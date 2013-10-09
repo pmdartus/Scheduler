@@ -2,14 +2,14 @@
 #include "process.h"
 #include "allocateMemory.h"
 
-void init_pcb(pcb_s* pcb, func_t f, unsigned int stack_size) {
-	//Need sa mere of MALLOC	
-	ctx_s new_ctx;
+void init_pcb(pcb_s* pcb, func_t f, unsigned int stack_size) {	
+	ctx_s* new_ctx = malloc(sizeof(ctx_s));
 
-	pcb->ctx = &new_ctx;
+	pcb->ctx = new_ctx;
 	init_ctx( pcb->ctx, f, stack_size);
 
 	pcb->state = 1;
+	pcb->next = null;
 }
 
 void init_ctx(ctx_s* ctx, func_t f, unsigned int stack_size) {
