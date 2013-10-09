@@ -2,6 +2,7 @@
 
 void switch_to(ctx_s* ctx) {
 	//Save current context
+	//%0 will be replaced by the value of the passed variable
 	__asm("mov %0, lr" : "=r"(current_ctx->adr_instruction)); //LR because we want the following instruction
 	__asm("mov %0, sp" : "=r"(current_ctx->adr_stack)); //stack pointer
 
