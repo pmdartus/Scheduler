@@ -12,7 +12,7 @@ typedef struct{
 	//Context
 	ctx_s* ctx;
 	
-	//Actual state of the process : 0 = created, 1 = ready, 2 = active
+	//Actual state of the process : 0 = created, 1 = ready, 2 = paused, 3 = active
 	int state = 0;
 
 	//Chained list mngt

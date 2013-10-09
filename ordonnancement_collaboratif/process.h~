@@ -19,9 +19,5 @@ typedef struct{
 	pcb_s* next;	
 } pcb_s;
 
-
-
-ctx_s* current_ctx;
-
 void init_pcb(func_t f, unsigned int stack_size);
 void init_ctx(ctx_s* ctx, func_t f, unsigned int stack_size);
