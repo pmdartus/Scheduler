@@ -9,4 +9,4 @@ typedef struct{
 
 ctx_s* current_ctx;
 
-void init_ctx(struct ctx_s* ctx, func_t f, unsigned int stack_size);
+void init_ctx(ctx_s* ctx, func_t f, unsigned int stack_size);

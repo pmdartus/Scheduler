@@ -1,5 +1,6 @@
 #include <stdint.h>
 #include "process.h"
+#include "allocateMemory.h"
 
 void init_ctx(ctx_s* ctx, func_t f, unsigned int stack_size) {
 	//Initialisation of the context	
@@ -10,4 +11,9 @@ void init_ctx(ctx_s* ctx, func_t f, unsigned int stack_size) {
 	
 	//The stack adress is resturned by AllocateMemory. As the stack is decremented, we add the stack size to the stack start adress.
 	(*ctx).adr_stack = (uint32_t) new_loc + stack_size - 1; //because start at 0
+	int n;
+	for ( n=0 ; n<11 ; n++ )
+	{
+		(*ctx).registers[n] = 0;
+	}
 }
