@@ -3,11 +3,21 @@
 typedef void (*func_t)(void);
 
 typedef struct{
-	uint32_t adr_instruction;
-	uint32_t adr_stack;
-	uint32_t registers [12];
-} ctx_s;
+	//Stack pointer and program counter
+	uint32_t pc;
+	uint32_t sp;
+	
+	//Actual state of the process : 0 = created, 1 = ready, 2 = active
+	int state = 0;
+	
+	//Function containing the running code, linked to some arguments that we also need to store
+	func_t f;
+	void* args;
 
-ctx_s* current_ctx;
+	//Chained list mngt
+	pcb_s* next;	
+} pcb_s;
+
+pcb_s* current_ctx;
 
 void init_ctx(ctx_s* ctx, func_t f, unsigned int stack_size);
