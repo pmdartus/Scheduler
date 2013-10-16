@@ -32,4 +32,4 @@ typedef struct{
 //  Functions
 //-------------------------
 
-void init_pcb(func_t f, unsigned int stack_size);
+void init_pcb(pcb_s* pcb, func_t f, unsigned int stack_size);
