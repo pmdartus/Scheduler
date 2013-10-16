@@ -6,6 +6,18 @@
 
 Checkout the gdb directory
 
+## INSA workflow
+
+First connect to INSA in ssh:
+```
+ssh [user]@iftpservev2.fr
+```
+
+And then make it pop! All the drivers for Rasberry Pi is installed, so you just need to `git clone git@github.com:pmdartus/Scheduler.git` the repo and follow the commands.
+
+> Bonus SWAG
+> Use transmit in sftp to open your files in Sublime and automatically push back to the server when saving! ;)
+
 ## Simple collaborative scheduler
 
 Checkout `ordonnanceemnt_collaboratif` directory
