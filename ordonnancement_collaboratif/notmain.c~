@@ -1,5 +1,6 @@
 #include <stdint.h>
 #include "dispatcher.h"
+#include "sched.h"
 
 const long STACK_SIZE = 100000;
 

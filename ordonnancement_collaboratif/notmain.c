@@ -28,8 +28,8 @@ void funcB()
 int
 notmain ( void )
 {
-	create_process(funcA, []);
-	create_process(funcB, []);
+	create_process(funcA);
+	create_process(funcB);
 
 	start_sched();
 
