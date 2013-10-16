@@ -7,7 +7,7 @@ pcb_s* act_pcb;
 //-------------------------
 void create_process(func_t f, void* args) {
 	// Init phase
-	pcb_s* new_pcb = malloc(sizeof(pcb_s));
+	pcb_s* new_pcb = AllocateMemory(sizeof(pcb_s));
 	init_pcb(new_pcb, f, STACK_SIZE);
 
 	// Set act_pcb for the first created process
