@@ -7,26 +7,19 @@
 // Used function by process
 typedef void (*func_t)(void);
 
-// Context structure definition
-typedef struct{
-	// Program counter
-	uint32_t pc;
-
-	// Stack Pointer
-	uint32_t sp;
-
-	//Registers
-	uint32_t registers [12];
-} ctx_s;
-
 // Context state definition
 typedef enum {Created, Ready, Paused, Active} ctx_state;
 
 // PCB structure to store process
 typedef struct{
-	//Context
-	ctx_s* ctx;
-	
+	//------- Context ----------
+	// Program counter
+	func_t pc;
+
+	// Stack Pointer
+	uint32_t sp;	
+
+	//------- Infos ----------
 	//Actual state of the process
 	ctx_state state;
 
@@ -40,4 +33,3 @@ typedef struct{
 //-------------------------
 
 void init_pcb(func_t f, unsigned int stack_size);
-void init_ctx(ctx_s* ctx, func_t f, unsigned int stack_size);
