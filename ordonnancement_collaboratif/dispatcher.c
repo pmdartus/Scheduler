@@ -8,7 +8,7 @@ void ctx_switch() {
 	__asm("mov %0, sp" : "=r"(act_pcb->adr_stack)); //stack pointer
 
 	//Switch
-	act_pcb = next_run;
+	act_pcb = act_pcb->next;
 
 	//update the mc: assembleur to restaure new context
 	__asm("mov sp, %0" : : "r"(act_pcb->adr_stack));

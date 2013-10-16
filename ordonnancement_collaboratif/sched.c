@@ -5,7 +5,7 @@ pcb_s* act_pcb;
 //  create_process
 //	Initialize pcb => from created to ready
 //-------------------------
-void create_process(func_t f) {
+void create_process(func_t f, void* args) {
 	// Init phase
 	pcb_s* new_pcb = AllocateMemory(sizeof(pcb_s));
 	init_pcb(new_pcb, f, STACK_SIZE);
@@ -30,9 +30,6 @@ void create_process(func_t f) {
 //	lunch process for the first time
 //-------------------------
 void start_current_process() {
-	//State -> Active
-	act_pcb->state = Active;
-
 	//Call function of the process
 	act_pcb->pc();
 }
@@ -43,9 +40,13 @@ void start_current_process() {
 //	switch automatically the process, based on ctx_switch
 //-------------------------
 void yield( ) {
-	next_run = act_pcb->next;
+	//Change status of quiting process
+	act_pcb->status = Paused;
 
 	ctx_switch();
+	
+	//Change status of ongoing process
+	act_pcb->status = Active;
 }
 
 
