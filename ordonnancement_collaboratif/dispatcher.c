@@ -15,4 +15,9 @@ void ctx_switch() {
 
 	//pull all registers from stack
 	__asm("pop {r0-r12}, lr");
+
+	//If Proc never lunched
+	if (act_pcb->state == Ready) {
+		start_current_context();
+	}
 }
