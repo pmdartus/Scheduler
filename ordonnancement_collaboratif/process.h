@@ -1,3 +1,6 @@
+#ifndef _PROCESS_H
+#define _PROCESS_H
+
 #include <stdint.h>
 
 //-------------------------
@@ -11,7 +14,7 @@ typedef void (*func_t)(void);
 typedef enum {Created, Ready, Paused, Active} ctx_state;
 
 // PCB structure to store process
-typedef struct{
+struct pcb_s {
 	//------- Context ----------
 	// Program counter
 	func_t pc;
@@ -25,11 +28,15 @@ typedef struct{
 
 	//Chained list
 	struct pcb_s* next;	
-} pcb_s;
+};
 
 
 //-------------------------
 //  Functions
 //-------------------------
 
-void init_pcb(pcb_s* pcb, func_t f, unsigned int stack_size);
+void init_pcb(struct pcb_s* pcb, func_t f, unsigned int stack_size);
+
+
+#endif
+

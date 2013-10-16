@@ -1,5 +1,5 @@
 // Global varible to store all PCBs
-pcb_s* act_pcb;
+struct pcb_s* act_pcb;
 
 //-------------------------
 //  create_process

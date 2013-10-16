@@ -1,5 +1,4 @@
 #include <stdint.h>
-#include "dispatcher.h"
 #include "sched.h"
 
 const long STACK_SIZE = 100000;
@@ -28,8 +27,8 @@ void funcB()
 int
 notmain ( void )
 {
-	create_process(funcA, []);
-	create_process(funcB, []);
+	create_process(funcA);
+	create_process(funcB);
 
 	start_sched();
 

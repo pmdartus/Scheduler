@@ -8,7 +8,7 @@
 //  init_pcb
 //	Initialize pcb => from created to ready
 //-------------------------
-void init_pcb(pcb_s* pcb, func_t f, unsigned int stack_size) {
+void init_pcb(struct pcb_s* pcb, func_t f, unsigned int stack_size) {
 
 	//Initialisation of the context	
 	pcb->pc = f;

@@ -21,5 +21,4 @@ void init_pcb(pcb_s* pcb, func_t f, unsigned int stack_size) {
 
 	//Init info for the pcb
 	pcb->state = Created;
-	pcb->next = NULL;
 }
