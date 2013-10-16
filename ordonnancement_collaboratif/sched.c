@@ -5,7 +5,7 @@ pcb_s* act_pcb;
 //  create_process
 //	Initialize pcb => from created to ready
 //-------------------------
-void create_process(func_t f, void* args) {
+void create_process(func_t f) {
 	// Init phase
 	pcb_s* new_pcb = AllocateMemory(sizeof(pcb_s));
 	init_pcb(new_pcb, f, STACK_SIZE);
