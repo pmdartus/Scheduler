@@ -30,10 +30,11 @@ void create_process(func_t f, void* args) {
 //	lunch process for the first time
 //-------------------------
 void start_current_process() {
-	//"Positionne contexte courrant" => WTF?
+	//State -> Active
+	act_pcb->state = Active;
 
 	//Call function of the process
-	act_pcb->ctx->pc();
+	act_pcb->pc();
 }
 
 
