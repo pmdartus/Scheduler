@@ -1,5 +1,9 @@
 #include <stdint.h>
 
+//-------------------------
+//  Type definition
+//-------------------------
+
 // Used function by process
 typedef void (*func_t)(void);
 
@@ -16,7 +20,7 @@ typedef struct{
 } ctx_s;
 
 // Context state definition
-typedef enum {created, ready, paused, active} ctx_state;
+typedef enum {Created, Ready, Paused, Active} ctx_state;
 
 // PCB structure to store process
 typedef struct{
@@ -24,11 +28,16 @@ typedef struct{
 	ctx_s* ctx;
 	
 	//Actual state of the process
-	ctx_state state = created;
+	ctx_state state;
 
 	//Chained list
 	pcb_s* next;	
 } pcb_s;
+
+
+//-------------------------
+//  Functions
+//-------------------------
 
 void init_pcb(func_t f, unsigned int stack_size);
 void init_ctx(ctx_s* ctx, func_t f, unsigned int stack_size);

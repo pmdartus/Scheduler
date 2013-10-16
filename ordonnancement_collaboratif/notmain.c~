@@ -1,7 +1,7 @@
 #include <stdint.h>
 #include "dispatcher.h"
 
-const STACK_SIZE = 100000;
+const long STACK_SIZE = 100000;
 
 void funcA()
 {
@@ -9,7 +9,7 @@ void funcA()
 
  while ( 1 ) {
    cptA ++;
-   switch_to(&ctx_B);
+   yield(&ctx_B);
  }
 }
 
@@ -19,7 +19,7 @@ void funcB()
 
  while ( 1 ) {
    cptB += 2 ;
-   switch_to(&ctx_A);
+   yield(&ctx_A);
  }
 }
 
@@ -27,11 +27,10 @@ void funcB()
 int
 notmain ( void )
 {
-	init_ctx(&ctx_A, funcA, STACK_SIZE);
-	init_ctx(&ctx_B, funcB, STACK_SIZE);
+	create_process(funcA, []);
+	create_process(funcB, []);
 
-	current_ctx = &ctx_init;
-	switch_to(&ctx_A);
+	start_sched();
 
 	/* Pas atteignable vues nos 2 fonctions */
 	return(0);
