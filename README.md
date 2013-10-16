@@ -1,5 +1,7 @@
 # Advanced Operating System course
 
+(Information)[http://perso.citi-lab.fr/kmarquet/4if-GRP.html]
+
 ## GDB and Rasberry Pi Emulator
 
 Checkout the gdb directory
