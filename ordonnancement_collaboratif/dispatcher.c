@@ -1,23 +1,25 @@
 #include  "dispatcher.h"
+#include  "sched.h"
 
 void ctx_switch() {
 	//First, save all registers in stack
-	__asm("push {r0-r12}, lr");
+	__asm("push {r0-r12, lr}");
 
 	//Save current context
-	__asm("mov %0, sp" : "=r"(act_pcb->adr_stack)); //stack pointer
+	__asm("mov %0, sp" : "=r"(act_pcb->sp)); //stack pointer
 
 	//Switch
-	act_pcb = act_pcb->next;
+	struct pcb_s* temp = act_pcb->next;
+	act_pcb = temp;
 
 	//update the mc: assembleur to restaure new context
-	__asm("mov sp, %0" : : "r"(act_pcb->adr_stack));
+	__asm("mov sp, %0" : : "r"(act_pcb->sp));
 
 	//pull all registers from stack
-	__asm("pop {r0-r12}, lr");
+	__asm("pop {r0-r12, lr}");
 
 	//If Proc never lunched
 	if (act_pcb->state == Ready) {
-		start_current_context();
+		start_current_process();
 	}
 }
