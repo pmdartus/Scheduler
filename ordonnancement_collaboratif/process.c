@@ -2,6 +2,12 @@
 #include "process.h"
 #include "allocateMemory.h"
 
+
+
+//-------------------------
+//  init_pcb
+//	Initialize pcb => from created to ready
+//-------------------------
 void init_pcb(pcb_s* pcb, func_t f, unsigned int stack_size) {	
 	ctx_s* new_ctx = malloc(sizeof(ctx_s));
 
@@ -12,6 +18,10 @@ void init_pcb(pcb_s* pcb, func_t f, unsigned int stack_size) {
 	pcb->next = null;
 }
 
+//-------------------------
+//  init_ctx
+//	Initialize ctx, used in pcb
+//-------------------------
 void init_ctx(ctx_s* ctx, func_t f, unsigned int stack_size) {
 	//Initialisation of the context	
 	(*ctx).adr_instruction = (uint32_t) f;

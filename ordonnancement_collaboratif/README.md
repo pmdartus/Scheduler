@@ -10,3 +10,6 @@ That known, we use it to save the current context instruction into current_ctx (
 
 The PCBs are chained lists that contains context and pointer to the next process.
 All the process are then stored globally, whithin the sched.c who ,anage the proc schedule. 
+
+# Scheduler algorythm
+
