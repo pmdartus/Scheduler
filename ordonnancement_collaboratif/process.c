@@ -8,7 +8,7 @@ void init_pcb(pcb_s* pcb, func_t f, unsigned int stack_size) {
 	pcb->ctx = new_ctx;
 	init_ctx( pcb->ctx, f, stack_size);
 
-	pcb->state = 1;
+	pcb->state = ready;
 	pcb->next = null;
 }
 
