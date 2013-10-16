@@ -6,7 +6,7 @@ OBJCOPY = $(ARMGNU)-objcopy
 CC = $(ARMGNU)-gcc
 AS = $(ARMGNU)-as
 
-CFLAGS = -Wall -nostdlib -fomit-frame-pointer -mno-apcs-frame -nostartfiles -ffreestanding -g -march=armv6z -marm -O2
+CFLAGS = -Wall -nostdlib -fomit-frame-pointer -mno-apcs-frame -nostartfiles -ffreestanding -g -march=armv6z -marm
 ASFLAGS = -g -march=armv6z
 
 C_FILES=notmain.c hw.c allocateMemory.c process.c dispatcher.c
