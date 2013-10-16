@@ -9,7 +9,7 @@ void funcA()
 
  while ( 1 ) {
    cptA ++;
-   yield(&ctx_B);
+   yield();
  }
 }
 
@@ -19,7 +19,7 @@ void funcB()
 
  while ( 1 ) {
    cptB += 2 ;
-   yield(&ctx_A);
+   yield();
  }
 }
 
