@@ -6,4 +6,4 @@
 //-------------------------
 
 //Switch context
-void switch_to(ctx_s* ctx);
+void ctx_switch();
