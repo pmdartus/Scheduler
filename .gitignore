@@ -5,6 +5,7 @@
 # Remaining file from (shitty) TextEdit
 *~
 *.*~
+**/*~
 
 # All generated files
 **/kernel.*
