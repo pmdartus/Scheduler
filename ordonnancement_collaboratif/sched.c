@@ -38,6 +38,11 @@ void create_process(func_t f) {
 void start_current_process() {
 	//Call function of the process
 	act_pcb->pc();
+	
+	//Declare the processus as terminated
+	act_pcb->status = Terminated;
+	//and switch
+	yield()
 }
 
 
