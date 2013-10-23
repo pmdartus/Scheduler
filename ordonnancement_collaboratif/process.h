@@ -11,7 +11,7 @@
 typedef void (*func_t)(void);
 
 // Context state definition
-typedef enum {Created, Ready, Paused, Active} ctx_state;
+typedef enum {Created, Ready, Paused, Active, Terminated} ctx_state;
 
 // PCB structure to store process
 typedef struct pcb_s {
