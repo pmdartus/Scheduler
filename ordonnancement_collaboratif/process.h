@@ -14,7 +14,7 @@ typedef void (*func_t)(void);
 typedef enum {Created, Ready, Paused, Active} ctx_state;
 
 // PCB structure to store process
-struct pcb_s {
+typedef struct pcb_s {
 	//------- Context ----------
 	// Program counter
 	func_t pc;
@@ -28,7 +28,7 @@ struct pcb_s {
 
 	//Chained list
 	struct pcb_s* next;	
-};
+} pcb_s;
 
 
 //-------------------------

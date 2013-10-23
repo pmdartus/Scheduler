@@ -1,17 +1,23 @@
+#include "sched.h"
+#include "process.h"
+#include "dispatcher.h"
+#include "allocateMemory.h"
+#include "notmain.c"
+
 // Global varible to store all PCBs
-struct pcb_s* act_pcb;
+pcb_s* act_pcb;
 
 //-------------------------
 //  create_process
 //	Initialize pcb => from created to ready
 //-------------------------
-void create_process(func_t f, void* args) {
+void create_process(func_t f) {
 	// Init phase
 	pcb_s* new_pcb = AllocateMemory(sizeof(pcb_s));
 	init_pcb(new_pcb, f, STACK_SIZE);
 
 	// Set act_pcb for the first created process
-	if (act_pcb = null) 
+	if (act_pcb = NULL) 
 	{
 		act_pcb = new_pcb;
 		act_pcb->next = act_pcb;
@@ -41,12 +47,12 @@ void start_current_process() {
 //-------------------------
 void yield( ) {
 	//Change status of quiting process
-	act_pcb->status = Paused;
+	act_pcb->state = Paused;
 
 	ctx_switch();
 	
 	//Change status of ongoing process
-	act_pcb->status = Active;
+	act_pcb->state = Active;
 }
 
 
