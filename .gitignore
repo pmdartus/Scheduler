@@ -7,4 +7,4 @@
 *.*~
 
 # All generated files
-exemple_gdb/kernel.*
+**/kernel.*
