@@ -31,6 +31,8 @@ void create_process(func_t f) {
 		act_pcb->next = new_pcb;
 		new_pcb->next = pcb_to_move;
 	}
+	
+	new_pcb->state = Ready;
 }
 
 
@@ -72,7 +74,9 @@ void schedule() {
 	//Elect next process
 	act_pcb -> state = Paused ;
 	act_pcb = act_pcb->next;
-	act_pcb -> state = Active;
+	if (act_pcb -> state != Ready) {
+		act_pcb -> state = Active;
+	}
 }
 
 
