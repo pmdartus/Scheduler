@@ -1,12 +1,14 @@
 #include <stdint.h>
 
+#define NULL ((void*)0)
+
 #include "sched.h"
 #include "process.h"
 #include "dispatcher.h"
 #include "allocateMemory.h"
 
 // Global varible to store all PCBs
-pcb_s* act_pcb;
+pcb_s* act_pcb = NULL;
 
 //-------------------------
 //  create_process
@@ -14,12 +16,12 @@ pcb_s* act_pcb;
 //-------------------------
 void create_process(func_t f) {
 	// Init phase
-	uint32_t* new_pcb_adr = AllocateMemory(sizeof(struct pcb_s));
-	pcb_s* new_pcb = (pcb_s*) new_pcb_adr;
+
+	pcb_s* new_pcb = (pcb_s*) AllocateMemory(sizeof(struct pcb_s));
 	init_pcb(new_pcb, f, STACK_SIZE);
 
 	// Set act_pcb for the first created process
-	if (act_pcb == 0) 
+	if (act_pcb == NULL) 
 	{
 		act_pcb = new_pcb;
 		act_pcb->next = act_pcb;
@@ -51,18 +53,27 @@ void start_current_process() {
 //-------------------------
 //  schedule
 //	Manage killed process
+//	Elect next process to be run
 //-------------------------
 void schedule() {
 	pcb_s* pcb = act_pcb;
 	
-	while( pcb->next ) {
-		//Desallocate pcb & stack
-		
+	while( pcb->next->state == Terminated ) {
 		//Update chained list
+		act_pcb->next = pcb->next;
+
+		//Desallocate pcb & stack
+		FreeAllocatedMemory((uint32_t*) pcb->sp);
+		FreeAllocatedMemory((uint32_t*) pcb);
 		
 		//next
-		pcb = pcb->next;
+		pcb = act_pcb->next;
 	}
+
+	//Elect next process
+	act_pcb -> state = Paused ;
+	act_pcb = act_pcb->next;
+	act_pcb -> state = Active;
 }
 
 
@@ -72,13 +83,7 @@ void schedule() {
 //	switch automatically the process, based on ctx_switch
 //-------------------------
 void yield( ) {
-	//Change status of quiting process
-	act_pcb->state = Paused;
-
 	ctx_switch();
-	
-	//Change status of ongoing process
-	act_pcb->state = Active;
 }
 
 

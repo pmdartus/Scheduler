@@ -11,10 +11,10 @@
 typedef void (*func_t)(void);
 
 // Context state definition
-typedef enum {Created, Ready, Paused, Active} ctx_state;
+typedef enum {Created, Ready, Paused, Active, Terminated} ctx_state;
 
 // PCB structure to store process
-struct pcb_s {
+typedef struct pcb_s {
 	//------- Context ----------
 	// Program counter
 	func_t pc;
@@ -28,7 +28,7 @@ struct pcb_s {
 
 	//Chained list
 	struct pcb_s* next;	
-};
+} pcb_s;
 
 
 //-------------------------

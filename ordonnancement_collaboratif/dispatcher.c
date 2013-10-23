@@ -8,12 +8,7 @@ void ctx_switch() {
 	//Save current context
 	__asm("mov %0, sp" : "=r"(act_pcb->sp)); //stack pointer
 	
-	//Manage killed process
-	schedule();
-
-	//Switch
-	struct pcb_s* temp = act_pcb->next;
-	act_pcb = temp;
+	schedule(); // this call changes act_pcb
 
 	//update the mc: assembleur to restaure new context
 	__asm("mov sp, %0" : : "r"(act_pcb->sp));
