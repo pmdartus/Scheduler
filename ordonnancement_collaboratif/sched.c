@@ -1,8 +1,9 @@
+#include <stdint.h>
+
 #include "sched.h"
 #include "process.h"
 #include "dispatcher.h"
 #include "allocateMemory.h"
-#include "notmain.c"
 
 // Global varible to store all PCBs
 pcb_s* act_pcb;
@@ -13,11 +14,12 @@ pcb_s* act_pcb;
 //-------------------------
 void create_process(func_t f) {
 	// Init phase
-	pcb_s* new_pcb = AllocateMemory(sizeof(pcb_s));
+	uint32_t* new_pcb_adr = AllocateMemory(sizeof(struct pcb_s));
+	pcb_s* new_pcb = (pcb_s*) new_pcb_adr;
 	init_pcb(new_pcb, f, STACK_SIZE);
 
 	// Set act_pcb for the first created process
-	if (act_pcb = NULL) 
+	if (act_pcb == 0) 
 	{
 		act_pcb = new_pcb;
 		act_pcb->next = act_pcb;

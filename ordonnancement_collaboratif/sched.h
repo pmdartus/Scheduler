@@ -13,6 +13,7 @@ void start_current_process();
 void start_sched();
 
 extern struct pcb_s* act_pcb;
+extern const long STACK_SIZE;
 
 #endif
 
