@@ -42,9 +42,9 @@ void start_current_process() {
 	act_pcb->pc();
 	
 	//Declare the processus as terminated
-	act_pcb->status = Terminated;
+	act_pcb->state = Terminated;
 	//and switch
-	yield()
+	yield();
 }
 
 
@@ -53,7 +53,7 @@ void start_current_process() {
 //	Manage killed process
 //-------------------------
 void schedule() {
-	sctruct pcb_s* pcb = act_pcb;
+	pcb_s* pcb = act_pcb;
 	
 	while( pcb->next ) {
 		//Desallocate pcb & stack
