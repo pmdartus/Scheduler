@@ -47,6 +47,25 @@ void start_current_process() {
 
 
 //-------------------------
+//  schedule
+//	Manage killed process
+//-------------------------
+void schedule() {
+	sctruct pcb_s* pcb = act_pcb;
+	
+	while( pcb->next ) {
+		//Desallocate pcb & stack
+		
+		//Update chained list
+		
+		//next
+		pcb = pcb->next;
+	}
+}
+
+
+
+//-------------------------
 //  yield
 //	switch automatically the process, based on ctx_switch
 //-------------------------
