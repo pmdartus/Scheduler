@@ -15,11 +15,13 @@ void ctx_switch() {
 	//update the mc: assembleur to restaure new context
 	__asm("mov sp, %0" : : "r"(act_pcb->sp));
 
-	//pull all registers from stack
-	__asm("pop {r0-r12, lr}");
-
 	//If Proc never lunched
 	if (act_pcb->state == Ready) {
+		//Go to the entry point: the function
 		start_current_process();
+	}
+	else {
+		//pull all registers from stack
+		__asm("pop {r0-r12, lr}");
 	}
 }
